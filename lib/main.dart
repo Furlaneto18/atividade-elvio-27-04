@@ -11,7 +11,7 @@ class LojaVestuarioApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Loja de Vestuário',
+      title: 'Loja de Vestuario',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
