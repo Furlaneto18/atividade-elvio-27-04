@@ -9,9 +9,10 @@ class ShoppingPage extends StatefulWidget {
 }
 
 class _ShoppingPageState extends State<ShoppingPage> {
+  // Controlador para o campo de quantidade
   final TextEditingController _qtyController = TextEditingController();
 
-  // Valores fixos
+  // Variáveis para armazenar o valor do produto e do frete
   final double _precoUnitario = 50.0;
   double _valorFrete = 10.0; // Padrão: Normal
 
@@ -43,6 +44,7 @@ class _ShoppingPageState extends State<ShoppingPage> {
             const Text('Produto: Camiseta Flutter', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             const Text('Valor Unitário 50,00'),
             const SizedBox(height: 20),
+            // Campo de entrada para a quantidade com teclado numérico
             TextField(
               controller: _qtyController,
               decoration: const InputDecoration(labelText: 'Quantidade'),
@@ -50,7 +52,7 @@ class _ShoppingPageState extends State<ShoppingPage> {
             ),
             const SizedBox(height: 20),
             const Text('Selecione o Frete:'),
-            // Opções de rádio para o frete
+            // Opção de Frete Normal usando RadioListTile e atualizando estado
             RadioListTile<double>(
               title: const Text('Normal (R\$ 10,00)'),
               value: 10.0,
@@ -59,6 +61,7 @@ class _ShoppingPageState extends State<ShoppingPage> {
                 setState(() => _valorFrete = value!);
               },
             ),
+            // Opção de Frete Expresso
             RadioListTile<double>(
               title: const Text('Expresso (R\$ 25,00)'),
               value: 25.0,
@@ -67,6 +70,7 @@ class _ShoppingPageState extends State<ShoppingPage> {
                 setState(() => _valorFrete = value!);
               },
             ),
+            // Botão para calcular o total e navegar
             const SizedBox(height: 20),
             Center(
               child: ElevatedButton(

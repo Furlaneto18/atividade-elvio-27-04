@@ -16,7 +16,7 @@ class LojaVestuarioApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // Define a Tela 1 como a página inicial
+      // Define a Tela de Login como a tela inicial do app
       home: const LoginPage(),
     );
   }

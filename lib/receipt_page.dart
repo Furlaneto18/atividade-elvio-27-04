@@ -17,6 +17,7 @@ class ReceiptPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              // Exibe o texto com o valor formatado para duas casas decimais
               const Icon(Icons.check_circle_outline, size: 80, color: Colors.green),
               const SizedBox(height: 20),
               Text(
@@ -28,7 +29,7 @@ class ReceiptPage extends StatelessWidget {
               const SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () {
-                  // Retira a tela atual da pilha e volta para a anterior
+                  // Utiliza Navigator.pop para remover a tela atual da pilha e voltar à anterior
                   Navigator.pop(context);
                 },
                 child: const Text('Voltar'),

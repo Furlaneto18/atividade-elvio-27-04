@@ -20,14 +20,16 @@ class _LoginPageState extends State<LoginPage> {
 
     // Dica de Debug: Isso fará o texto digitado aparecer no Console (Run) do Android Studio
     print("Tentando logar com -> Usuário: '$usuario' | Senha: '$senha'");
-
+    // Lógica de validação estática
     if (usuario == 'admin' && senha == '123') { //[cite: 2]
+      // Caso correto, navega para a Tela 2 (ShoppingPage) empilhando-a
       print("Login com sucesso!");
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => const ShoppingPage()),
       );
     } else {
+      // Caso incorreto, exibe mensagem de erro na parte inferior via SnackBar
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Usuário ou senha incorretos!'),
