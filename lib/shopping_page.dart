@@ -71,13 +71,40 @@ class _ShoppingPageState extends State<ShoppingPage> {
               },
             ),
             // Botão para calcular o total e navegar
-            const SizedBox(height: 20),
+            const Spacer(),
+            // Botão para calcular o total e navegar
             Center(
               child: ElevatedButton(
-                onPressed: _calcularETelaFinal,
+                onPressed: () {
+                  // Tenta converter o texto. Retorna null se estiver vazio ou inválido.
+                  int? quantidade = int.tryParse(_qtyController.text);
+
+                  // Validação: se for null ou zero, exibe o erro e para por aqui.
+                  if (quantidade == null || quantidade <= 0) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Por favor, insira uma quantidade válida!'),
+                        backgroundColor: Colors.red,
+                      ),
+                    );
+                    return; // O 'return' interrompe a execução e impede a navegação
+                  }
+
+                  // Se passou pela validação, faz o cálculo normalmente
+                  double totalCalculado = (_precoUnitario * quantidade) + _valorFrete;
+
+                  // Navegação para a Tela 3 passando o valor calculado como parâmetro
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ReceiptPage(valorFinal: totalCalculado),
+                    ),
+                  );
+                },
                 child: const Text('Calcular Total'),
               ),
             ),
+            const SizedBox(height: 20),
           ],
         ),
       ),
